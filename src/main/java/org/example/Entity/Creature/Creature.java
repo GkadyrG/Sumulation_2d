@@ -6,7 +6,7 @@ import org.example.Entity.Entity;
 import java.util.Map;
 
 public abstract class Creature extends Entity {
-    private int HP = 100;
+    private int HP = 510;
     private final static int SPEED = 1;
 
     public int getHP() {

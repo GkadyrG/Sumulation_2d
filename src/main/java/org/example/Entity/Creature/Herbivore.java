@@ -7,7 +7,10 @@ import java.util.Map;
 
 public class Herbivore extends Creature {
 
-
+    public  Herbivore() {}
+    public Herbivore(Coordinate coordinate) {
+        setCoordinate(coordinate);
+    }
     @Override
     public void makeMove(Map<Coordinate,Entity> map) {
 

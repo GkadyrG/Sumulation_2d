@@ -14,7 +14,7 @@ public class findPath {
         visited.add(coordinateStart);
 
         while(!queue.isEmpty()) {
-            Coordinate currentCoordinate = queue.poll();
+            Coordinate currentCoordinate = queue.remove();
             if (currentCoordinate.equals(coordinateFinish)) {
                 return reconstructPath(parents, coordinateStart, coordinateFinish);
             }
@@ -29,6 +29,7 @@ public class findPath {
         return null;
     }
 
+
     private static Queue<Coordinate> reconstructPath(Map<Coordinate, Coordinate> parents, Coordinate start, Coordinate end) {
         Queue<Coordinate> path = new LinkedList<>();
         Coordinate current = end;
@@ -39,7 +40,20 @@ public class findPath {
         }
 
         path.offer(start);
+        path = reverse(path);
         return path;
+    }
+
+    private static <T> Queue<T> reverse(Queue<T> queue) {
+        Stack<T> stack = new Stack<>();
+        while (!queue.isEmpty()) {
+            stack.add(queue.remove());
+        }
+
+        while (!stack.isEmpty()) {
+            queue.add(stack.pop());
+        }
+        return queue;
     }
 
     private static List<Coordinate> getValidNeighbors(Map<Coordinate,Entity> map, Coordinate coordinate) {

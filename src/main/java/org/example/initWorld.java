@@ -1,21 +1,13 @@
 package org.example;
 
-import org.example.Action.Action;
-import org.example.Action.EntityGenerationAction.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.example.Action.EntityGenerateAction;
 
 public class initWorld {
     public static void initialization(World world) {
-        List<Action> initActions = new ArrayList<>();
-        initActions.add(new GrassEntityGenerateAction());
-        initActions.add(new HerbivoreEntityGenerateAction());
-        initActions.add(new PredatorEntityGenerateAction());
-        initActions.add(new RockEntityGenerateAction());
-        initActions.add(new TreeEntityGenerateAction());
-        for (Action action: initActions) {
-            action.perform(world);
+        for (int row = 0; row < world.getSize(); row++) {
+            for (int col = 0; col < world.getSize(); col++) {
+                world.setMap(new Coordinate(row,col), EntityGenerateAction.createRandomEntity(new Coordinate(row,col)));
+            }
         }
     }
 }

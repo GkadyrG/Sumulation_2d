@@ -27,7 +27,7 @@ public class Coordinate {
     public static Coordinate getRandomEmptyCoordinates(World world) {
         for (int row = 0; row < world.getSize(); row++) {
             for (int col = 0; col < world.getSize(); col++) {
-                if (world.getMap(new Coordinate(row,col)) == null) {
+                if (world.getEntityFromMap(new Coordinate(row,col)) == null) {
                     return new Coordinate(row,col);
                 }
             }
